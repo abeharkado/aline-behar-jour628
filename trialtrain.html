@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Derailment with Swing Bridge</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body { background: #f9f9f9; margin: 0; }
+    svg { width: 100%; height: 250px; }
+    .track { stroke: #444; stroke-width: 4; }
+    .car-body { fill: #555; rx: 4; ry: 4; }
+    .engine { fill: #333; }
+    .wheel { fill: #222; }
+    .window { fill: #ccc; }
+    .hazmat { fill: red; }
+    .bridge { stroke: #666; stroke-width: 4; }
+    .smoke { fill: #bbb; opacity: 0.2; }
+  </style>
+</head>
+<body>
+  <svg></svg>
+
+  <script>
+    const svg = d3.select("svg");
+    const width = window.innerWidth;
+    const carWidth = 60, carHeight = 30;
+    const startY = 100;
+    const gap = 10;
+    const trainLength = 8;
+
+    const bridgeX = 500;
+    const bridgeLength = 100;
+
+    // Draw track (left and right side of bridge)
+    svg.append("line")
+      .attr("class", "track")
+      .attr("x1", 0)
+      .attr("x2", bridgeX)
+      .attr("y1", startY + carHeight + 10)
+      .attr("y2", startY + carHeight + 10);
+
+    svg.append("line")
+      .attr("class", "track")
+      .attr("x1", bridgeX + bridgeLength)
+      .attr("x2", width)
+      .attr("y1", startY + carHeight + 10)
+      .attr("y2", startY + carHeight + 10);
+
+    // Draw swing bridge (rotating part)
+    const bridge = svg.append("line")
+      .attr("class", "bridge")
+      .attr("x1", bridgeX)
+      .attr("x2", bridgeX + bridgeLength)
+      .attr("y1", startY + carHeight + 10)
+      .attr("y2", startY + carHeight + 10);
+
+    // Build train cars
+    const cars = d3.range(trainLength - 1).map(i => {
+      const g = svg.append("g")
+        .attr("transform", `translate(${i * (carWidth + gap)}, ${startY})`);
+      
+      g.append("rect")
+        .attr("class", "car-body")
+        .attr("width", carWidth)
+        .attr("height", carHeight);
+
+      g.selectAll(".wheel")
+        .data([10, 40])
+        .enter()
+        .append("circle")
+        .attr("class", "wheel")
+        .attr("cx", d => d)
+        .attr("cy", carHeight + 2)
+        .attr("r", 5);
+
+      g.selectAll(".window")
+        .data([15, 35])
+        .enter()
+        .append("rect")
+        .attr("class", "window")
+        .attr("x", d => d)
+        .attr("y", 5)
+        .attr("width", 10)
+        .attr("height", 10);
+
+      return g;
+    });
+
+    // Build engine (last in the array, moved up by 10px)
+    const engine = svg.append("g")
+      .attr("transform", `translate(${(trainLength - 1) * (carWidth + gap)}, ${startY})`);
+
+    engine.append("rect")
+      .attr("class", "car-body engine")
+      .attr("width", carWidth)
+      .attr("height", carHeight + 10);
+
+    engine.append("rect") // chimney in front
+      .attr("x", carWidth - 15)
+      .attr("y", -10)
+      .attr("width", 10)
+      .attr("height", 10)
+      .attr("fill", "#666");
+
+    engine.selectAll(".wheel")
+      .data([10, 40])
+      .enter()
+      .append("circle")
+      .attr("class", "wheel")
+      .attr("cx", d => d)
+      .attr("cy", carHeight + 12)
+      .attr("r", 5);
+
+    // Combine cars and engine
+    const train = [...cars, engine]; // Engine is now last in the array
+
+    // Smoke group (fog-style)
+    const smokeGroup = svg.append("g").attr("opacity", 0);
+
+    function showFog(x, y) {
+      const puffs = d3.range(20);
+      smokeGroup.selectAll("circle")
+        .data(puffs)
+        .enter()
+        .append("circle")
+        .attr("class", "smoke")
+        .attr("cx", () => x + Math.random() * 80 - 40)
+        .attr("cy", () => y + Math.random() * 30 - 10)
+        .attr("r", () => 20 + Math.random() * 30)
+        .transition()
+        .duration(3000)
+        .attr("cy", d => y - 40 + Math.random() * 20)
+        .attr("opacity", 0.05);
+
+      smokeGroup.transition().duration(500).attr("opacity", 1);
+    }
+
+    // Animate train across track
+    train.forEach((g, i) => {
+      g.transition()
+        .duration(4000)
+        .attr("transform", `translate(${200 + i * (carWidth + gap)}, ${startY})`)
+        .on("end", function(_, idx) {
+          if (i === train.length - 1) {
+            // After the train crosses the bridge, rotate the bridge
+            bridge.transition()
+              .duration(1000)
+              .attr("transform", `rotate(30, ${bridgeX}, ${startY + carHeight + 10})`);
+            
+            // Derail the last 2 cars
+            const lastTwo = train.slice(-5, -3); // Corrected slicing to grab the middle cars
+            lastTwo.forEach((car, j) => {
+              car.transition()
+                .delay(500)
+                .duration(1000)
+                .attr("transform", `translate(${200 + (trainLength - 2 + j) * (carWidth + gap)}, ${startY + 50}) rotate(25)`)
+                .select(".car-body")
+                .attr("class", "car-body hazmat");
+
+              // Show smoke cloud after derailment
+              setTimeout(() => {
+                showFog(500 + j * (carWidth + gap) + 30, startY + 20);
+              }, 1000);
+            });
+          }
+        });
+    });
+  </script>
+</body>
+</html>
