@@ -24,7 +24,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
                 data: [
                 {x: 77.1, y: 45986},
                 ],
-                label: "US",
+                label: "U.S.",
                 borderColor: "#A58D49",
                 backgroundColor:"#A58D49",
                 borderWidth:2,
