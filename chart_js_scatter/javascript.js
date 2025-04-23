@@ -7,8 +7,8 @@ var ctx = document.getElementById('myChart').getContext('2d');
                   {x: 71.5, y: 3678},
                 ],
                 label: "China",
-                borderColor: "#FABB91",
-                backgroundColor: "#FABB91",
+                borderColor: "#1B4CFA",
+                backgroundColor: "#1B4CFA",
                 borderWidth:2,
                
               }, { 
@@ -16,8 +16,8 @@ var ctx = document.getElementById('myChart').getContext('2d');
                   {x: 61.1, y: 2548},
                 ],
                 label: "India",
-                borderColor: "#9D91FA",
-                backgroundColor: "#9D91FA",
+                borderColor: "#7A4B57",
+                backgroundColor: "##7A4B57",
                 borderWidth:2,
                 
               }, { 
@@ -25,8 +25,8 @@ var ctx = document.getElementById('myChart').getContext('2d');
                 {x: 77.1, y: 45986},
                 ],
                 label: "US",
-                borderColor: "#523D2F",
-                backgroundColor:"#523D2F",
+                borderColor: "#A58D49",
+                backgroundColor:"#A58D49",
                 borderWidth:2,
                 
               }, {
@@ -34,48 +34,48 @@ var ctx = document.getElementById('myChart').getContext('2d');
                     {x: 68.3, y: 5878},
                     ],
                     label: "Indonesia",
-                    borderColor: "#ffa500",
-                    backgroundColor:"rgb(255,165,0,0.1)",
+                    borderColor: "#49A556",
+                    backgroundColor:"#49A556",
                     borderWidth:2,
               }, {
                 data: [
                     {x: 71.9, y: 11461},
                     ],
                     label: "Brazil",
-                    borderColor: "#ffa500",
-                    backgroundColor:"rgb(255,165,0,0.1)",
+                    borderColor: "#495DA5",
+                    backgroundColor:"#495DA5",
                     borderWidth:2,
               }, {
                 data: [
                     {x: 65.4, y: 13173},
                     ],
                     label: "Russia",
-                    borderColor: "#ffa500",
-                    backgroundColor:"rgb(255,165,0,0.1)",
+                    borderColor: "#1BFA3B",
+                    backgroundColor:"#1BFA3B",
                     borderWidth:2,
               }, {
                 data: [
                     {x: 62.6, y: 3366},
                     ],
                     label: "Pakistan",
-                    borderColor: "#ffa500",
-                    backgroundColor:"rgb(255,165,0,0.1)",
+                    borderColor: "#FA1B51",
+                    backgroundColor:"#FA1B51",
                     borderWidth:2,
               }, {
                 data: [
                     {x: 65.8, y: 1632},
                     ],
                     label: "Bangladesh",
-                    borderColor: "#ffa500",
-                    backgroundColor:"rgb(255,165,0,0.1)",
+                    borderColor: "#FABF1B",
+                    backgroundColor:"#FABF1B",
                     borderWidth:2,
               }, {
                 data: [
                     {x: 81.1, y: 32193},
                     ],
                     label: "Japan",
-                    borderColor: "#ffa500",
-                    backgroundColor:"rgb(255,165,0,0.1)",
+                    borderColor: "#BA4361",
+                    backgroundColor:"#BA4361",
                     borderWidth:2,
               }
             ]
