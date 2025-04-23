@@ -8,8 +8,8 @@ var myChart = new Chart(ctx, {
             label: 'Female',
             data: [2,4,6,6,4,3,6,6,7,4,6],
             fill: true,
-            borderColor: '#EB38B6',
-            backgroundColor: 'rgba(235, 56, 182, 0.3)',
+            borderColor: '#7A486A',
+            backgroundColor: 'rgba(122, 72, 106, 0.3)',
             tension: 0.1},
         {
             label: 'Male',
