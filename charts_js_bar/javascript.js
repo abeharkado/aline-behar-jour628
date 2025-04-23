@@ -7,14 +7,14 @@ var myChart = new Chart(ctx, {
             label: 'Fiction',
             data: [3.7, 3.84, 3.5, 3.88, 3.68, 3.8, 3.88, 3.86, 3.98, 3.82, 3.94],
             backgroundColor: [
-                '#ff0800'
+                '#5838EB'
             ]
         },
         {
             label: 'Non-fiction',
             data: [3.825, 4.04, 4.06, 4.12, 4.08, 4.1, 4, 4.04, 4.1, 4.24, 4.24],
             backgroundColor: [
-                '#FFA500'
+                '#EB38B6'
             ],
         }
     ]
