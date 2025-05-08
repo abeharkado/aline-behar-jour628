@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 159.87 81.08">
+  <!-- Generator: Adobe Illustrator 29.5.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 137)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path d="M41.56,13.91h75.65c9.29,0,16.84,7.54,16.84,16.84v26.1c0,3.76-3.05,6.81-6.81,6.81H41.56c-9.29,0-16.84-7.54-16.84-16.84v-16.07c0-9.29,7.54-16.84,16.84-16.84Z" transform="translate(158.77 77.56) rotate(180)"/>
+  <rect x="8.11" y="47.06" width="30.66" height="16.59" transform="translate(46.88 110.71) rotate(180)"/>
+  <circle cx="40.37" cy="66.2" r="7.63"/>
+  <rect x="65.46" y="35.27" width="68.59" height="29.6" transform="translate(199.51 100.13) rotate(180)"/>
+  <circle cx="124.38" cy="66.05" r="7.63"/>
+  <circle cx="106.81" cy="66.2" r="7.63"/>
+  <path d="M30.69,18.14l6.1,9.68c1.37,2.17-.19,5-2.76,5h-12.19c-2.57,0-4.13-2.83-2.76-5l6.1-9.68c1.28-2.03,4.24-2.03,5.52,0Z"/>
+  <rect x="2.53" y="57.36" width="6.98" height="6.29" transform="translate(12.04 121.02) rotate(180)"/>
+  <rect x="2.53" y="51.38" width="2.09" height="5.99" transform="translate(7.15 108.74) rotate(180)"/>
+  <g>
+    <rect class="st0" x="82.69" y="31.18" width="42.87" height="3.5" rx="1.41" ry="1.41" transform="translate(208.25 65.86) rotate(-180)"/>
+    <rect class="st0" x="82.69" y="38.79" width="42.87" height="3.5" rx="1.41" ry="1.41" transform="translate(208.25 81.08) rotate(180)"/>
+    <rect class="st0" x="81.68" y="46.4" width="42.87" height="3.5" rx="1.41" ry="1.41" transform="translate(206.24 96.3) rotate(180)"/>
+  </g>
+  <rect x="66" y="10.15" width="10.2" height="7.67" rx="2.54" ry="2.54" transform="translate(142.19 27.96) rotate(-180)"/>
+  <rect x="49.18" y="10.15" width="10.2" height="7.45" rx="2.54" ry="2.54" transform="translate(108.56 27.75) rotate(180)"/>
+  <polygon points="56.58 58.89 90.37 58.89 85.45 70.83 61.74 70.83 56.58 58.89"/>
+  <ellipse cx="21.94" cy="65.86" rx="7.63" ry="8.25"/>
+  <rect x="132.29" y="52.43" width="7.83" height="12.28"/>
+  <polygon points="27.8 47.75 8.02 47.75 19.09 27.66 27.8 27.66 27.8 47.75"/>
+  <g>
+    <rect class="st0" x="42.97" y="19.45" width="13.82" height="15.32" transform="translate(99.76 54.22) rotate(180)"/>
+    <g>
+      <rect class="st0" x="31.91" y="19.47" width="9.48" height="15.27" transform="translate(73.31 54.21) rotate(180)"/>
+      <polygon class="st0" points="31.91 19.45 39.09 34.77 24.74 34.77 31.91 19.45"/>
+    </g>
+  </g>
+  <rect x="140.12" y="57.63" width="4.34" height="2.52"/>
+  <rect x="143.54" y="55.61" width="1.96" height="6.8" rx=".68" ry=".68"/>
+</svg>
