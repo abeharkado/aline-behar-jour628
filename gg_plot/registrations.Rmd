@@ -1,0 +1,112 @@
+---
+title: 'Data visualization assignment: ggplot2'
+output: html_document
+date: "2025-04-30"
+---
+
+```{r setup, include=FALSE}
+install.packages("treemapify")
+install.packages("RColorBrewer")
+install.packages('svglite')
+
+library(tidyverse)
+library(scales)
+library(treemapify)
+library(RColorBrewer)
+library(svglite)
+library(janitor)
+library(stringr)
+library(lubridate)
+
+```
+
+```{r}
+##load the data
+
+lobbyist_data <- read.csv("registrations.csv")|>
+  clean_names()
+```
+
+
+```{r}
+##Chart 1: Top 10 lobbyists bar chart
+
+lobby_bar <- lobbyist_data|>
+  count(employer)|>
+  arrange(desc(n)) |>
+  slice_head(n = 10)
+
+lobby_bar |> 
+  ggplot(aes(y = reorder(employer, -n), x = n)) +
+  geom_col(fill="#E03A3E") +
+  coord_flip() + 
+  theme_minimal() +
+  labs(title = "Top 10 Employers by Lobbyist Registrations in Maryland.",
+       subtitle= "Pepco Holdings and Johns Hopkins tied for the top lobbyists in Maryland.",
+       y = "Employer",
+       x = "Registrations",
+      caption = "Source: Maryland Lobbying Registrations \n by Aline Behar Kado") +
+  scale_y_discrete(labels = function(x) str_wrap(x, width = 20)) +
+  theme(axis.text.x = element_text(angle = 45, size = 6, hjust = 1))
+
+```
+
+
+```{r}
+##Chart 2: start dates area chart
+
+lobby_dates <- lobbyist_data |>
+  mutate(
+    # Extract start date
+    start_date = str_extract(registration_period, "^\\d{2}/\\d{2}/\\d{2}"),
+    # Extract end date
+    end_date = str_extract(registration_period, "\\d{2}/\\d{2}/\\d{2}$"),
+    # Convert to proper dates (assuming 20xx for the years)
+    start_date = mdy(start_date),
+    end_date = mdy(end_date),
+    start_year = year(start_date)
+  )
+
+lobby_area <- lobby_dates |>
+  count(start_year)|>
+  arrange(desc(n)) |>
+  slice_head(n = 6)
+
+
+lobby_area|>
+  ggplot(aes(x= start_year, y = n)) +
+  geom_area(alpha = 0.5, fill="#E03A3E")+
+  theme_minimal() +
+  scale_y_continuous(labels = scales::label_number(scale = 1)) +
+  scale_x_continuous(guide = guide_axis(angle = 45)) +
+  labs(title = "Record Maryland lobbyist registrations in 2024.",
+       subtitle= "Between 2021 and 2024, Maryland has seen a steady increase in lobbyist registrations.",
+       y = "Registrations",
+       x = "Years",
+      caption = "Source: Maryland Lobbying Registrations \n by Aline Behar Kado")
+
+```
+```{r}
+# Chart 3: 
+
+lobby_tree <- lobbyist_data|>
+  count(lobbyist_registrant)|>
+  arrange(desc(n)) |>
+  slice_head(n = 10)
+
+ggplot(lobby_tree, aes(area = n, fill = n, label = lobbyist_registrant)) +
+  geom_treemap() +
+  geom_treemap_text(colour = "white", place = "centre", size=9) +
+  theme_minimal() +
+  labs(
+    title = "Top 10 Lobbyists in Maryland",
+    color= "registrations",
+    subtitle = "These are the lobbyist with most registrations in Maryland.",
+    caption = "Source:  Maryland Lobbying Registrations \n by Aline Behar Kado"
+    
+  )
+
+```
+
+```
+
