@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final data visualization project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Hazardous Materials traveling on Rail</h1>
+  <h2>Howard Center Project</h2>
+
+
+  <!--load in powerpoint-->
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vShn8CxVLcKXFwQC2ZNpv_GHRmJqLyYl-Z895fatGHdm4TivUunXrXcAoADGH7eVJQAh8cKdt3vZSEf/pubembed?start=false&loop=false&delayms=3000" 
+    frameborder="10" 
+    width="960" 
+    height="569" 
+    allowfullscreen="true"
+     mozallowfullscreen="true" 
+     webkitallowfullscreen="true">
+</iframe>
+
+
+<!-- ARCGIS map -->
+  <script type="module" src="https://js.arcgis.com/embeddable-components/4.32/arcgis-embeddable-components.esm.js"></script>
+   <arcgis-embedded-map style="height:600px;width:700px;padding:50px;" item-id="d88c2609ca634c4eb070e94b2d1f8193" theme="light" heading-enabled legend-enabled portal-url="https://uofmd.maps.arcgis.com" ></arcgis-embedded-map>
+
+   
+   <!--rail cars hazmat-->
+   <img src="images/train_cars.svg" alt="Top hazmat cars" width="500" height="500">
+ 
+  <script src="script.js"></script>
+</body>
+</html>
