@@ -25,8 +25,11 @@
       }
 
       .st2 {
-        stroke: #006a20;
         stroke-width: .5px;
+      }
+
+      .st2, .st12 {
+        stroke: #07006b;
       }
 
       .st4 {
@@ -71,7 +74,6 @@
       }
 
       .st12 {
-        stroke: #07006b;
         stroke-width: .75px;
       }
     </style>
